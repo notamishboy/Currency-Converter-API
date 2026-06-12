@@ -20,7 +20,6 @@ The implementation uses:
 - .NET 10 isolated worker
 - local `exchangeRates.json` file as the primary source of rates
 - environment variables as overrides
-- file reload on change for the bonus requirement
 - unit tests for conversion logic, repository behavior, and request parsing
 
 ## Project structure
