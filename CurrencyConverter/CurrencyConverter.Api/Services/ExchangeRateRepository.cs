@@ -2,6 +2,7 @@ using System.Globalization;
 using CurrencyConverter.Api.Common;
 using CurrencyConverter.Api.Configuration;
 using CurrencyConverter.Api.Services.Interfaces;
+using CurrencyConverter.Api.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
