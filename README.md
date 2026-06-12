@@ -81,10 +81,6 @@ To override a rate locally, add an environment variable under `Values` in `local
 
 The environment variable value wins over the JSON file value.
 
-## Dynamic configuration
-
-The app loads `exchangeRates.json` with reload-on-change enabled. Update the file while the host is running and the new rate is picked up without restarting the application.
-
 ## Notes on error handling
 
 The API returns clear `400` responses for:
