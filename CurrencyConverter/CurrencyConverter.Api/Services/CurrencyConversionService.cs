@@ -56,7 +56,7 @@ public sealed class CurrencyConversionService : ICurrencyConversionService
             request.TargetCurrency,
             cancellationToken);
 
-        if (!exchangeRateResult.IsSuccess || exchangeRateResult.Value is null)
+        if (!exchangeRateResult.IsSuccess)
         {
             return Result<ConversionResponse>.Failure(
                 exchangeRateResult.Error ?? new ApiError(
@@ -64,7 +64,7 @@ public sealed class CurrencyConversionService : ICurrencyConversionService
                     "Unable to resolve the exchange rate for the requested currency pair."));
         }
 
-        var exchangeRate = exchangeRateResult.Value.Value;
+        var exchangeRate = exchangeRateResult.Value;
         var convertedAmount = Math.Round(request.Amount * exchangeRate, 4, MidpointRounding.AwayFromZero);
 
         _logger.LogInformation(
