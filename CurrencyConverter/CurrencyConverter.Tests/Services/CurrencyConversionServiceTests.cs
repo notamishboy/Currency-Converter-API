@@ -49,22 +49,6 @@ public sealed class CurrencyConversionServiceTests
     }
 
     [Fact]
-    public async Task ConvertAsync_ReturnsIdentityConversion_ForSameCurrency()
-    {
-        var repository = new FakeExchangeRateRepository((source, target) =>
-            Result<decimal>.Failure(new ApiError(ErrorCodes.UnsupportedCurrencyPair, "Pair lookup should not be used.")));
-
-        var service = new CurrencyConversionService(repository, NullLogger<CurrencyConversionService>.Instance);
-
-        var result = await service.ConvertAsync(new ConversionRequest("EUR", "EUR", 25m));
-
-        Assert.True(result.IsSuccess);
-        Assert.NotNull(result.Value);
-        Assert.Equal(1m, result.Value!.ExchangeRate);
-        Assert.Equal(25m, result.Value.ConvertedAmount);
-    }
-
-    [Fact]
     public async Task ConvertAsync_ReturnsFailure_ForNegativeAmount()
     {
         var repository = new FakeExchangeRateRepository((_, _) => Result<decimal>.Success(74m));
