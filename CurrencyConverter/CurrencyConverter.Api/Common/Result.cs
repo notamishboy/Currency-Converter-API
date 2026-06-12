@@ -1,3 +1,5 @@
+using CurrencyConverter.Api.Models;
+
 namespace CurrencyConverter.Api.Common;
 
 public sealed record Result<T>(bool IsSuccess, T? Value, ApiError? Error)
