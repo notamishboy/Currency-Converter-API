@@ -21,7 +21,7 @@ public sealed class CurrencyConverterFunction
 
     [Function("ConvertCurrency")]
     public async Task<HttpResponseData> ConvertAsync(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "convert")] HttpRequestData request)
+        [HttpTrigger(AuthorizationLevel.Function, "get", Route = "convert")] HttpRequestData request)
     {
         _logger.LogInformation("Received currency conversion request: {Url}", request.Url);
 
