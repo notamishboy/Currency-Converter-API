@@ -30,8 +30,7 @@ public sealed class ExchangeRateRepositoryTests
         var result = await repository.GetExchangeRateAsync("USD", "INR");
 
         Assert.True(result.IsSuccess);
-        Assert.True(result.Value.HasValue);
-        Assert.Equal(74.00m, result.Value.Value);
+        Assert.Equal(74.00m, result.Value);
     }
 
     [Fact]
@@ -62,8 +61,7 @@ public sealed class ExchangeRateRepositoryTests
             var result = await repository.GetExchangeRateAsync("USD", "INR");
 
             Assert.True(result.IsSuccess);
-            Assert.True(result.Value.HasValue);
-            Assert.Equal(81.00m, result.Value.Value);
+            Assert.Equal(81.00m, result.Value);
         }
         finally
         {
@@ -91,8 +89,7 @@ public sealed class ExchangeRateRepositoryTests
 
         var initial = await repository.GetExchangeRateAsync("USD", "INR");
         Assert.True(initial.IsSuccess);
-        Assert.True(initial.Value.HasValue);
-        Assert.Equal(74.00m, initial.Value.Value);
+        Assert.Equal(74.00m, initial.Value);
 
         WriteRates(filePath, new Dictionary<string, decimal>
         {
